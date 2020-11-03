@@ -16,30 +16,12 @@ class LieDetector extends StatefulWidget {
 final findRandom = FindRandom();
 final sound = Sound();
 final methods = Methods();
+String displayText = methods.notStarted();
 
 class _LieDetectorState extends State<LieDetector> {
   // This widget is the root of your application.
 
   Color bck = findRandom.getRandomColor();
-
-  List<Icon> processingIcons = [
-    Icon(
-      Icons.favorite,
-      color: Colors.pink,
-      size: 24.0,
-      semanticLabel: 'Text to announce in accessibility modes',
-    ),
-    Icon(
-      Icons.audiotrack,
-      color: Colors.green,
-      size: 30.0,
-    ),
-    Icon(
-      Icons.beach_access,
-      color: Colors.blue,
-      size: 36.0,
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +34,16 @@ class _LieDetectorState extends State<LieDetector> {
         body: Center(
           child: GestureDetector(
             onTap: () {
+              findRandom.checkLie();
               setState(() {
                 bck = findRandom.getRandomColor();
+
                 if (findRandom.checkLie() == true) {
+                  displayText = methods.foundLie();
                   return sound.play("lie");
+                } else {
+                  displayText = methods.foundTrue();
+                  return null;
                 }
               });
             },
@@ -69,7 +57,7 @@ class _LieDetectorState extends State<LieDetector> {
               ),
               child: Center(
                 child: Text(
-                  methods.foundLie(),
+                  displayText,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
                   textAlign: TextAlign.center,
                 ),
