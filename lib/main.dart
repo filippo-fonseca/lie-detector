@@ -43,7 +43,7 @@ class _LieDetectorState extends State<LieDetector> {
                   return sound.play("lie");
                 } else {
                   displayText = methods.foundTrue();
-                  return null;
+                  return sound.play("truth");
                 }
               });
             },
