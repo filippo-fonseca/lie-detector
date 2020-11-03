@@ -30,8 +30,8 @@ class _LieDetectorState extends State<LieDetector> {
               backgroundColor: Color(0xff000000),
             ),
             body: Center(
-              child: FlatButton(
-                onPressed: () {
+              child: GestureDetector(
+                onTap: () {
                   setState(() {
                     bck = findRandom.getRandomColor();
                     sound.play("lie");
