@@ -54,8 +54,9 @@ class _LieDetectorState extends State<LieDetector> {
             onTap: () {
               setState(() {
                 bck = findRandom.getRandomColor();
-                sound.play("lie");
-                findRandom.checkLie();
+                if (findRandom.checkLie() == true) {
+                  return sound.play("lie");
+                }
               });
             },
             child: Container(
@@ -68,7 +69,7 @@ class _LieDetectorState extends State<LieDetector> {
               ),
               child: Center(
                 child: Text(
-                  "Initialize Lie Detector",
+                  methods.foundLie(),
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
                   textAlign: TextAlign.center,
                 ),
