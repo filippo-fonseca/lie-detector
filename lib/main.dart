@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:flutter/cupertino.dart";
 
 import 'generator.dart';
 
@@ -6,9 +7,11 @@ void main() {
   runApp(LieDetector());
 }
 
+Icon icon = Icon(Icons.check);
+
 Widget ld = LD();
 bool ldState = false;
-Widget childUse = Text("Pre");
+Widget childUse = Text("Take me to the lie detector ➡");
 
 class LieDetector extends StatefulWidget {
   @override
@@ -27,7 +30,8 @@ class _LieDetectorState extends State<LieDetector> {
           backgroundColor: Color(0xff000000),
         ),
         body: Center(
-            child: FlatButton(
+            child: CupertinoButton(
+          color: Color(0xff000000),
           onPressed: () {
             setState(() {
               childUse = LD();
