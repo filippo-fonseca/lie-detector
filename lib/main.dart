@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import "class.dart";
+import 'generator.dart';
 
 void main() {
   runApp(LieDetector());
